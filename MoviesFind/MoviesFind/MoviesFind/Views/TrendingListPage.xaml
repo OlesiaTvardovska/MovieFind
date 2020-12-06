@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:swipeCardView="clr-namespace:MLToolkit.Forms.SwipeCardView;assembly=MLToolkit.Forms.SwipeCardView"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+             xmlns:converters="clr-namespace:MoviesFind.Converters"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="MoviesFind.Views.TrendingListPage"
+             x:Name="View">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <swipeCardView:SwipeCardView ItemsSource="{Binding Movies}"
+                                 HorizontalOptions="FillAndExpand"
+                                 Padding="10"
+                                 VerticalOptions="FillAndExpand"
+                                 LoopCards="True">
+        <swipeCardView:SwipeCardView.ItemTemplate>
+            <DataTemplate>
+                <StackLayout>
+                    <Frame 
+                            BorderColor="Black"
+                            CornerRadius="10" 
+                            Padding="0" 
+                            HorizontalOptions="FillAndExpand" 
+                            VerticalOptions="FillAndExpand">
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference View}, Path=BindingContext.TurnCardCommand}"/>
+                        </Frame.GestureRecognizers>
+
+                        <Grid>
+                            <Image Source="{Binding PosterPath}" 
+                               IsVisible="{Binding Source={x:Reference View}, Path=BindingContext.IsImageVisible}"
+                               Aspect="AspectFill" 
+                               AbsoluteLayout.LayoutBounds=".5,0.5,1,1"
+                               AbsoluteLayout.LayoutFlags="All" />
+
+                            <StackLayout 
+                                BackgroundColor="#c5edac"
+                                IsVisible="{Binding Source={x:Reference View}, Path=BindingContext.IsImageVisible, Converter={StaticResource InverseBoolConverter}}">
+                                <Label Text="{Binding Title}" 
+                                       HorizontalTextAlignment="Center"
+                                       VerticalOptions="Center"
+                                       FontFamily="Comic"
+                                       FontAttributes="Bold"
+                                       FontSize="27"
+                                       TextColor="#0d1321"/>
+                                <Label Text="{Binding ReleaseDate}"
+                                       FontSize="24"
+                                       TextColor="#0d1321"/>
+                                <Label Text="{Binding Overview}"
+                                       FontAttributes="Italic"
+                                       FontSize="24"
+                                       TextColor="#0d1321"/>
+                                <Label Text="{Binding VoteAvg}"
+                                       FontSize="24"
+                                       TextColor="#226f54"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </DataTemplate>
+        </swipeCardView:SwipeCardView.ItemTemplate>
+    </swipeCardView:SwipeCardView>
+
+</ContentPage> 
