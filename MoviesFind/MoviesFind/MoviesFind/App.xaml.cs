@@ -42,6 +42,7 @@ namespace MoviesFind
             containerRegistry.RegisterTypeForViewModelNavigation<BaseNavigationPage, BaseNavigationPageViewModel>();
             containerRegistry.RegisterTypeForViewModelNavigation<RootTabbedPage, RootTabbedPageViewModel>();
             containerRegistry.RegisterTypeForViewModelNavigation<TrendingListPage, TrendingListPageViewModel>();
+            containerRegistry.RegisterTypeForViewModelNavigation<MovieDetailsPage, MovieDetailsPageViewModel>();
         }
     }
 }

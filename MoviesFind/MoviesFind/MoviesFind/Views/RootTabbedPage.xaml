@@ -5,5 +5,5 @@
             x:Class="MoviesFind.Views.RootTabbedPage">
 
     <pages:TrendingListPage Title="Trending"/>
-
+    <pages:TopMoviesListPage Title="Top Movies"/>
 </TabbedPage>

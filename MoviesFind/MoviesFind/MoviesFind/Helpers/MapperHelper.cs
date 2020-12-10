@@ -28,7 +28,10 @@ namespace MoviesFind.Helpers
                 {
                     viewModel.TrendingMoviesList = Mapper.Map<ObservableCollection<MovieItemModel>>(apiModel.Results);
                 });
-
+                config.CreateMap<TopMoviesListApiModel, TopMoviesListModel>().AfterMap((apiModel, viewModel) =>
+                {
+                    viewModel.TopMoviesList = Mapper.Map<ObservableCollection<MovieItemModel>>(apiModel.Results);
+                });
             });
 
             return configuration.CreateMapper();

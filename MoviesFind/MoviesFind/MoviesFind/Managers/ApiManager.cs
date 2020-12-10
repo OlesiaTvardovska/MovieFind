@@ -45,5 +45,27 @@ namespace MoviesFind.Managers
             await _userDialogs.AlertAsync(response.ErrorMessage);
             return new TrendingModel();
         }
+
+        public async Task<TopMoviesListModel> GetTopMoviesList(bool showLoading = true)
+        {
+            if (showLoading)
+            {
+                _userDialogs.ShowLoading();
+            }
+            var response = await _apiService.GetTopMoviesList();
+            if (showLoading)
+            {
+                _userDialogs.HideLoading();
+            }
+
+            if (response.IsSuccessful)
+            {
+                var aa = _mapper.Map<TopMoviesListModel>(response.Data);
+                return aa;
+            }
+
+            await _userDialogs.AlertAsync(response.ErrorMessage);
+            return new TopMoviesListModel();
+        }
     }
 }

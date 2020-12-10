@@ -43,9 +43,10 @@ namespace MoviesFind.ViewModels
         {
             _userDialogs.ShowLoading();
 
-            Movies = new ObservableCollection<MovieItemModel>(
-                (await _apiManager.GetTrendingMoviesList())
-                .TrendingMoviesList);
+            var a = (await _apiManager.GetTrendingMoviesList())
+                .TrendingMoviesList;
+            Movies = new ObservableCollection<MovieItemModel>(a
+                );
 
             _userDialogs.HideLoading();
         }

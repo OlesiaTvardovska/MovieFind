@@ -11,6 +11,7 @@ namespace MoviesFind.Contracts
     {
         Task<HttpResponse<TrendingApiModel>> GetTrendingMoviesList();
 
+        Task<HttpResponse<TopMoviesListApiModel>> GetTopMoviesList();
 
     }
 }

@@ -13,5 +13,9 @@ namespace MoviesFind.Helpers
         public const string TrendingApi = "/trending/movie/week";
 
         public const string ImageUrl = "https://image.tmdb.org/t/p/w500";
+
+        public const string TopMoviesApi = "/movie/top_rated";
+
+        public const string NavigateToMovieDetailsPage = "NavigateToMovieDetailsPage";
     }
 }

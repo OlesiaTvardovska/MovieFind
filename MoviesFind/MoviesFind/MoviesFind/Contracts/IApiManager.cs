@@ -9,5 +9,7 @@ namespace MoviesFind.Contracts
     public interface IApiManager
     {
         Task<TrendingModel> GetTrendingMoviesList(bool showLoading = true);
+
+        Task<TopMoviesListModel> GetTopMoviesList(bool showLoading = true);
     }
 }

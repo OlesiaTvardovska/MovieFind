@@ -9,7 +9,7 @@ namespace MoviesFind.Models.Views
 {
     public class MovieItemModel : BindableBase
     {
-        public static Action<MovieItemModel> MovieClickedAction;
+        public static Action<MovieItemModel> MovieSelectedAction;
 
         public bool Adult { get; set; }
 
@@ -24,14 +24,5 @@ namespace MoviesFind.Models.Views
         public string Title { get; set; }
 
         public string ReleaseDate { get; set; }
-        public ICommand TurnCardCommand
-        {
-            get
-            {
-                return new DelegateCommand(() => {
-                    MovieClickedAction?.Invoke(this);
-                });
-            }
-        }
     }
 }

@@ -14,5 +14,11 @@ namespace MoviesFind.Services
             return await GetAsync<TrendingApiModel>(
                 new Uri($"{ConstantHelper.BaseUrl}{ConstantHelper.TrendingApi}?api_key={ConstantHelper.ApiKey}"));
         }
+
+        public async Task<HttpResponse<TopMoviesListApiModel>> GetTopMoviesList()
+        {
+            return await GetAsync<TopMoviesListApiModel>(
+                new Uri($"{ConstantHelper.BaseUrl}{ConstantHelper.TopMoviesApi}?api_key={ConstantHelper.ApiKey}"));
+        }
     }
 }
